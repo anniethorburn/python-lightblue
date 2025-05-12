@@ -1,11 +1,11 @@
 import types
 import datetime
 
-import _lightbluecommon
-import _obexcommon
-import _lightblueobex    # python extension
+from . import _lightbluecommon
+from . import _obexcommon
+from . import _lightblueobex    # python extension
 
-from _obexcommon import OBEXError
+from ._obexcommon import OBEXError
 
 _HEADER_MASK = 0xc0
 _HEADER_UNICODE = 0x00

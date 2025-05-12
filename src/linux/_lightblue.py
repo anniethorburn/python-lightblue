@@ -3,15 +3,15 @@ import socket as _socket
 try:
     import bluetooth    # pybluez module
     try:
-        import _bluetooth   # pybluez internal implementation module
+        from . import _bluetooth   # pybluez internal implementation module
     except:
         import bluetooth._bluetooth as _bluetooth
 except ImportError, e:
     raise ImportError("LightBlue requires PyBluez to be installed, " + \
         "cannot find PyBluez 'bluetooth' module: " + str(e))
 
-import _lightbluecommon
-import _lightblueutil
+from . import _lightbluecommon
+from . import _lightblueutil
 
 
 # public attributes
@@ -249,11 +249,11 @@ def stopadvertise(sock):
 
 
 def selectdevice():
-    import _discoveryui
+    from . import _discoveryui
     return _discoveryui.selectdevice()
 
 def selectservice():
-    import _discoveryui
+    from . import _discoveryui
     return _discoveryui.selectservice()
 
 
@@ -349,5 +349,3 @@ def _gethcisock(devid=-1):
         raise _lightbluecommon.BluetoothError(
             "Cannot access local device: " + str(e))
     return sock
-
-
